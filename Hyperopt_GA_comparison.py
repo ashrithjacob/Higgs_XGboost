@@ -29,8 +29,8 @@ from skopt import gp_minimize
 
 # main only execs if this is the source file
 if __name__ == "__main__":
-    tests_df = pd.read_csv('/home/ashrith/github/behaviour_project/Higgs_Xgboost/test.csv')
-    train_df = pd.read_csv('/home/ashrith/github/behaviour_project/Higgs_Xgboost/training.csv')    
+    tests_df = pd.read_csv('/home/ashrith/github/Higgs_XGboost/dataset/test.csv')
+    train_df = pd.read_csv('/home/ashrith/github/Higgs_XGboost/dataset/training.csv')
     
     
 #by dropping first we don't get 2 different columns for Label, rather one just for s (1 if s and 0 if b)
