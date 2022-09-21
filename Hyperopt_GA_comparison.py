@@ -26,14 +26,12 @@ from functools import partial
 from skopt import space
 from skopt import gp_minimize
 
-
 # main only execs if this is the source file
 if __name__ == "__main__":
     tests_df = pd.read_csv('/home/ashrith/github/Higgs_XGboost/dataset/test.csv')
     train_df = pd.read_csv('/home/ashrith/github/Higgs_XGboost/dataset/training.csv')
-    
-    
-#by dropping first we don't get 2 different columns for Label, rather one just for s (1 if s and 0 if b)
+
+# By dropping first we don't get 2 different columns for Label, rather one just for s (1 if s and 0 if b)
 train_df = pd.get_dummies(train_df, columns=['Label'], drop_first=True)
 
 ncols_train = train_df.shape[1]
@@ -71,12 +69,12 @@ eval_list=[(evals)]
 num_round = 360
 print ('loading data end, start to boost trees')
 
-
 #Model: Dmatrix
 D_train = xgb.DMatrix( X_train, Y_train, missing = -999.0, weight=weight )
 D_tests = xgb.DMatrix(X_tests, Y_tests)
 watchlist_train = [ (D_train,'train') ]
 watchlist_tests =  [ (D_tests,'tests') ]
+
 #this works
 boosted_tree = xgb.train( param_list, D_train, num_round, watchlist_train, early_stopping_rounds=15,verbose_eval=10);
 
