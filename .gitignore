@@ -1,2 +1,3 @@
 *.secrets
 dataset/*
+.ipynb_checkpoints/

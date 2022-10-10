@@ -19,7 +19,7 @@ import inspect
 import sys
 import hyperopt
 
-from hyperopt import hp, fmin ,tpe, Trials
+from hyperopt import hp, fmin, tpe, Trials
 from xgboost import plot_tree
 from sklearn import tree
 from functools import partial

@@ -29,3 +29,4 @@ parameters:
 - Levenburg markenburg algorithm
 - autocoders and elm
 
+SEE: https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/ for specifics on package installation
