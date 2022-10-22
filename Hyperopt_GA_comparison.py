@@ -7,7 +7,7 @@ Created on Wed Jun 29 15:29:46 2022
 """
 """
 Higgs Data set:  Train 25000 x 33
-                 Test 55000 x 31 (no weight and label column)
+                 Test  55000 x 31 (no weight and label column)
 """
 import numpy as np
 import pandas as pd
