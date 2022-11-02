@@ -49,6 +49,11 @@ param['eval_metric'] = 'auc'
 param['silent'] = 1
 param['nthread'] = 1
 
+# To watch muliple params use the following, else only displays last
+# eval_metric
+param_list = list(param.items()) + [('eval_metric', 'ams@')]
+num_round = 360
+
 # param['lambda']=0.1 (part of denominator in formula)
 # param['gamma']=0.1 (if gain > gamma, then keep leaf)
 # param['subsample'] = 0.5
@@ -59,12 +64,6 @@ param['nthread'] = 1
 # param['seed'] = seed
 # random.seed(seed)
 
-evals = list([('eval_metric', 'auc')] + [('eval_metric', 'ams@0.15')])
-param_list = list(param.items()) + [('eval_metric', 'ams@0.15')]
-eval_list = [evals]
-num_round = 360
-print('loading data end, start to boost trees')
-
 # Model: Dmatrix
 
 D_train = xgb.DMatrix(X_train, Y_train, missing=-999.0, weight=weight)
@@ -74,11 +73,17 @@ watchlist_tests = [(D_tests, 'tests')]
 
 # this works
 
+print('loading data end, start to boost trees')
+
 boosted_tree = xgb.train(
     param_list,
     D_train,
     num_round,
     watchlist_train,
-    early_stopping_rounds=15,
+    early_stopping_rounds=20,
     verbose_eval=10,
 )
+
+boosted_tree.save_model('higgs.model')
+
+print("finished training")
