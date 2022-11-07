@@ -14,12 +14,8 @@ import xgboost as xgb
 # main only execs if this is the source file
 
 if __name__ == '__main__':
-    tests_df = \
-        pd.read_csv('/home/ashrith/github/Higgs_XGboost/dataset/test.csv'
-                    )
-    train_df = \
-        pd.read_csv('/home/ashrith/github/Higgs_XGboost/dataset/training.csv'
-                    )
+    tests_df = pd.read_csv('dataset/test.csv')
+    train_df = pd.read_csv('dataset/training.csv')
 
 # Setting 'drop_first=True' we don't get 2 different columns for Label
 # Rather one just for s (1 if s and 0 if b)
